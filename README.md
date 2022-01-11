@@ -47,7 +47,7 @@
 - В случае ошибки дожна показать `Error` и `\n` за ним **on the standard error**. `Errors` включают для примера:
 	 - some arguments aren’t integers, 
 	 - some arguments are bigger than an integer, 
-	 - and/or there are duplicates.
+	 - there are duplicates.
 - Во время защиты push_swap будет проверена готовым чекером следующим образом:
 
 `$>ARG="4 67 3 87 23"; ./push_swap $ARG | wc -l`

@@ -2,9 +2,6 @@
 
 int	main(int argc, char **argv)
 {
-	if (argc > 2)
-	{
-		/* code */
-	}
+	validate_args(int argc, char argv);
 	return (0);
 }
