@@ -1,34 +1,36 @@
 #include "push_swap.h"
 
-int	checkNextChar(char *str)
+int checkNextChar(const char *str)
 {
-	if (*str == ' ')
-	{
-		if ((*str + 1) == ' ' || (*str + 1) == '-' || (*str + 1) == '+' || ft_isdigit(*str + 1))
-			return (1);
-	}
-	else if (*str == '-' || *str == '+')
-	{
-		if (ft_isdigit(*str + 1))
-			return (1);
-	}
-	else if (ft_isdigit(*str))
-	{
-		if ((*str + 1) == ' ' || ft_isdigit(*str + 1))
-			return (1);
-	}
+	char currentChar;
+	char nextChar;
+
+	currentChar = *str;
+	nextChar = *(str + 1);
+	if (currentChar == SPACE
+		&& ft_strchr(VALID_CHARS_AFTER_SPACE, nextChar))
+		return (1);
+	else if (ft_strchr(ARITHMETICAL_CHARS, currentChar)
+			 && ft_isdigit(nextChar))
+		return (1);
+	else if (ft_isdigit(currentChar)
+			 && ft_strchr(VALID_CHARS_AFTER_DIGIT, nextChar))
+		return (1);
 	return (0);
 }
 
-void	validate_args(int argc, char **argv)
+void validate_args(int argc, char **argv)
 {
-	if (argc == 2 && ft_strlen(argv[1]) != 0)
+	char	*arg;
+
+	arg = argv[1];
+	if (argc == 2 && ft_strlen(arg) != 0)
 	{
-		while (*argv[1])
+		while (*arg)
 		{
-			if (!checkNextChar(*argv[1]))
+			if (!checkNextChar(arg))
 				exit(EXIT_FAILURE);
-			argv[1]++;
+			arg++;
 		}
 	}
 }
