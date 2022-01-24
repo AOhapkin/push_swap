@@ -19,18 +19,35 @@ int checkNextChar(const char *str)
 	return (0);
 }
 
-void validate_args(int argc, char **argv)
+void checkArgumentChars(const char *string)
 {
-	char	*arg;
+	char *arg;
 
-	arg = argv[1];
-	if (argc == 2 && ft_strlen(arg) != 0)
+	arg = string;
+	while (*arg)
 	{
-		while (*arg)
-		{
-			if (!checkNextChar(arg))
-				exit(EXIT_FAILURE);
-			arg++;
-		}
+		if (!checkNextChar(arg))
+			exit(EXIT_FAILURE);
+		arg++;
 	}
+}
+
+void validate_args(int argc, const char **argv)
+{
+	int i;
+
+	if (argc >= 2)
+	{
+		i = 1;
+		while (argv[i])
+		{
+			if (ft_strlen(argv[i]) == 0)
+				exit(EXIT_FAILURE);
+			checkArgumentChars(argv[i]);
+			i++;
+		}
+
+	}
+	else
+		exit(EXIT_FAILURE);
 }
