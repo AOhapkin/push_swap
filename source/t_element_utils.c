@@ -1,0 +1,75 @@
+#include "push_swap.h"
+
+t_element	*find_last_t_element(t_element *head)
+{
+	if (head)
+	{
+		while (head->next != 0)
+			head = head->next;
+		return (head);
+	}
+	return (0);
+}
+
+t_element	*create_new_t_element(int value)
+{
+	t_element	*new;
+
+	new = malloc(sizeof(new));
+	if (new)
+	{
+		new->value = value;
+		new->next = NULL;
+		return (new);
+	}
+	return (NULL);
+}
+
+void	push_back(t_element **head, int value)
+{
+	t_element	*last_elem;
+
+	if (*head)
+	{
+		last_elem = find_last_t_element(*head);
+		last_elem->next = create_new_t_element(value);
+	}
+	else
+	{
+		*head = create_new_t_element(value);
+	}
+}
+
+void	push_front(t_element **head, int value)
+{
+	t_element	*new_elem;
+
+	new_elem = create_new_t_element(value);
+	if (head && new_elem)
+	{
+		new_elem->next = *head;
+		*head = new_elem;
+	}
+}
+
+void	free_list(t_element *head)
+{
+	t_element	*temp;
+
+	while (head != NULL)
+	{
+		temp = head;
+		head = head->next;
+		free(temp);
+	}
+}
+
+void	print_t_element_list(t_element *head)
+{
+	while (head)
+	{
+		printf("%d ", head->value);
+		head = head->next;
+	}
+	printf("\n");
+}

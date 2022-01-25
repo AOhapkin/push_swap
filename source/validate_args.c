@@ -23,7 +23,7 @@ void checkArgumentChars(const char *string)
 {
 	char *arg;
 
-	arg = string;
+	arg = (char *)string;
 	while (*arg)
 	{
 		if (!checkNextChar(arg))
