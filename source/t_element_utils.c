@@ -25,6 +25,19 @@ t_element	*create_new_t_element(int value)
 	return (NULL);
 }
 
+int	size_t_element(t_element *head)
+{
+	int		len;
+
+	len = 0;
+	while (head != NULL)
+	{
+		head = head->next;
+		len++;
+	}
+	return (len);
+}
+
 void	push_back(t_element **head, int value)
 {
 	t_element	*last_elem;
@@ -73,3 +86,50 @@ void	print_t_element_list(t_element *head)
 	}
 	printf("\n");
 }
+
+void	push_t_element(t_element **src, t_element **dst)
+{
+	t_element	*temp;
+
+	if (src)
+	{
+		temp = *src;
+		*src = (*src)->next;
+		temp->next = *dst;
+		*dst = temp;
+	}
+}
+
+void	rotate_t_element(t_element **head)
+{
+	t_element	*temp;
+
+	if (size_t_element(*head) >= 2)
+	{
+		temp = *head;
+		*head = (*head)->next;
+		temp->next = NULL;
+		push_back(head, temp->value);
+		free(temp);
+	}
+}
+
+void	rotate_reverse_t_element(t_element **head)
+{
+	t_element	*last;
+	t_element	*prelast;
+
+	if (size_t_element(*head) >= 2)
+	{
+		last = *head;
+		prelast = *head;
+		while (last->next)
+		{
+			prelast = last;
+			last = last->next;
+		}
+		prelast->next = NULL;
+		push_front(head, last->value);
+	}
+}
+

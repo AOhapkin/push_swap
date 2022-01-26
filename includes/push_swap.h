@@ -33,5 +33,8 @@ void	push_back(t_element **head, int value);
 void	push_front(t_element **head, int value);
 void	free_list(t_element *head);
 void	print_t_element_list(t_element *head);
+void	push_t_element(t_element **src, t_element **dst);
+void	rotate_t_element(t_element **head);
+void	rotate_reverse_t_element(t_element **head);
 
 #endif
