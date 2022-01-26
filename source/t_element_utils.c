@@ -133,3 +133,17 @@ void	rotate_reverse_t_element(t_element **head)
 	}
 }
 
+void	swap_t_element(t_element **head)
+{
+	int	head_value;
+	int temp_value;
+
+	if (size_t_element(*head) >= 2)
+	{
+		head_value = (*head)->value;
+		temp_value = (*head)->next->value;
+		(*head)->value = temp_value;
+		(*head)->next->value = head_value;
+	}
+}
+

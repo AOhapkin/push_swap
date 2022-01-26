@@ -31,9 +31,9 @@ int main()
 	push_back(&head2, 10);
 	print_t_element_list(head2);
 
-	rotate_t_element(&head);
-	rotate_reverse_t_element(&head2);
+	swap_t_element(&head);
 	print_t_element_list(head);
+	swap_t_element(&head2);
 	print_t_element_list(head2);
 	return (0);
 }
