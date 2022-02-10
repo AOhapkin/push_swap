@@ -7,7 +7,11 @@ int main(int argc, const char **argv)
 	validate_args(argc, argv);
 	ft_bzero(&singleton, sizeof(t_base));
 	init_singleton(&singleton, argc, (char **) argv);
-	print_t_stack(singleton.stack_a);
+//	print_t_stack(singleton.stack_a);
+	if (!is_valid_values(singleton.stack_a))
+	{
+		clear
+	}
 	return (0);
 }
 

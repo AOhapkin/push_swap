@@ -33,5 +33,6 @@ void	rotate_reverse_t_element(t_stack **head);
 void	swap_t_element(t_stack **head);
 void	init_singleton(t_base *singleton, int argc, char **argv);
 long	ft_atol(const char *str);
+void	validate_values(t_stack *head);
 
 #endif
