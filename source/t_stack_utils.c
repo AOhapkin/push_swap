@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-t_element	*find_last_t_element(t_element *head)
+t_stack	*find_last_t_element(t_stack *head)
 {
 	if (head)
 	{
@@ -11,9 +11,9 @@ t_element	*find_last_t_element(t_element *head)
 	return (0);
 }
 
-t_element	*create_new_t_element(int value)
+t_stack	*create_new_t_element(long value)
 {
-	t_element	*new;
+	t_stack	*new;
 
 	new = malloc(sizeof(new));
 	if (new)
@@ -25,7 +25,7 @@ t_element	*create_new_t_element(int value)
 	return (NULL);
 }
 
-int	size_t_element(t_element *head)
+int	size_t_element(t_stack *head)
 {
 	int		len;
 
@@ -38,9 +38,9 @@ int	size_t_element(t_element *head)
 	return (len);
 }
 
-void	push_back(t_element **head, int value)
+void	push_back(t_stack **head, long value)
 {
-	t_element	*last_elem;
+	t_stack	*last_elem;
 
 	if (*head)
 	{
@@ -53,9 +53,9 @@ void	push_back(t_element **head, int value)
 	}
 }
 
-void	push_front(t_element **head, int value)
+void	push_front(t_stack **head, long value)
 {
-	t_element	*new_elem;
+	t_stack	*new_elem;
 
 	new_elem = create_new_t_element(value);
 	if (head && new_elem)
@@ -65,9 +65,9 @@ void	push_front(t_element **head, int value)
 	}
 }
 
-void	free_list(t_element *head)
+void	free_list(t_stack *head)
 {
-	t_element	*temp;
+	t_stack	*temp;
 
 	while (head != NULL)
 	{
@@ -77,19 +77,19 @@ void	free_list(t_element *head)
 	}
 }
 
-void	print_t_element_list(t_element *head)
+void	print_t_stack(t_stack *head)
 {
 	while (head)
 	{
-		printf("%d ", head->value);
+		printf("%ld ", head->value);
 		head = head->next;
 	}
 	printf("\n");
 }
 
-void	push_t_element(t_element **src, t_element **dst)
+void	push_t_element(t_stack **src, t_stack **dst)
 {
-	t_element	*temp;
+	t_stack	*temp;
 
 	if (src)
 	{
@@ -100,9 +100,9 @@ void	push_t_element(t_element **src, t_element **dst)
 	}
 }
 
-void	rotate_t_element(t_element **head)
+void	rotate_t_element(t_stack **head)
 {
-	t_element	*temp;
+	t_stack	*temp;
 
 	if (size_t_element(*head) >= 2)
 	{
@@ -114,10 +114,10 @@ void	rotate_t_element(t_element **head)
 	}
 }
 
-void	rotate_reverse_t_element(t_element **head)
+void	rotate_reverse_t_element(t_stack **head)
 {
-	t_element	*last;
-	t_element	*prelast;
+	t_stack	*last;
+	t_stack	*prelast;
 
 	if (size_t_element(*head) >= 2)
 	{
@@ -133,10 +133,10 @@ void	rotate_reverse_t_element(t_element **head)
 	}
 }
 
-void	swap_t_element(t_element **head)
+void	swap_t_element(t_stack **head)
 {
-	int	head_value;
-	int temp_value;
+	long	head_value;
+	long	temp_value;
 
 	if (size_t_element(*head) >= 2)
 	{
@@ -146,4 +146,3 @@ void	swap_t_element(t_element **head)
 		(*head)->next->value = head_value;
 	}
 }
-

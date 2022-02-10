@@ -9,33 +9,29 @@
 # define VALID_CHARS_AFTER_DIGIT	" 1234567890"
 # define ARITHMETICAL_CHARS			"-+"
 
-typedef struct          s_element
+typedef struct          s_stack
 {
-	int             value;
-	struct s_element	*next;
-}		        t_element;
-
-typedef struct	s_args
-{
-	char			*value;
-	struct s_args	*next;
-}				t_args;
+	long             value;
+	struct s_stack	*next;
+}		        t_stack;
 
 typedef struct	s_base
 {
-	struct s_element	*value;
-	struct s_args	*next;
+	t_stack	*stack_a;
+	t_stack	*stack_b;
 }				t_base;
 
 void	validate_args(int argc, const char **argv);
-void	save_stack(t_element *stack, int argc, const char **argv);
-void	push_back(t_element **head, int value);
-void	push_front(t_element **head, int value);
-void	free_list(t_element *head);
-void	print_t_element_list(t_element *head);
-void	push_t_element(t_element **src, t_element **dst);
-void	rotate_t_element(t_element **head);
-void	rotate_reverse_t_element(t_element **head);
-void	swap_t_element(t_element **head);
+void	save_stack(t_stack *stack, int argc, const char **argv);
+void	push_back(t_stack **head, long value);
+void	push_front(t_stack **head, long value);
+void	free_list(t_stack *head);
+void	print_t_stack(t_stack *head);
+void	push_t_element(t_stack **src, t_stack **dst);
+void	rotate_t_element(t_stack **head);
+void	rotate_reverse_t_element(t_stack **head);
+void	swap_t_element(t_stack **head);
+void	init_singleton(t_base *singleton, int argc, char **argv);
+long	ft_atol(const char *str);
 
 #endif
