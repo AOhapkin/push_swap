@@ -1,5 +1,10 @@
 #include "push_swap.h"
 
+void	clear_singleton(t_base singleton)
+{
+
+}
+
 int main(int argc, const char **argv)
 {
 	t_base	singleton;
@@ -10,7 +15,7 @@ int main(int argc, const char **argv)
 //	print_t_stack(singleton.stack_a);
 	if (!is_valid_values(singleton.stack_a))
 	{
-		clear
+		clear_singleton(singleton);
 	}
 	return (0);
 }

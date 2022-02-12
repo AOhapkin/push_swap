@@ -9,6 +9,9 @@
 # define VALID_CHARS_AFTER_DIGIT	" 1234567890"
 # define ARITHMETICAL_CHARS			"-+"
 
+# define INT_MAX         2147483647
+# define INT_MIN         (-2147483647-1)
+
 typedef struct          s_stack
 {
 	long             value;
@@ -33,6 +36,6 @@ void	rotate_reverse_t_element(t_stack **head);
 void	swap_t_element(t_stack **head);
 void	init_singleton(t_base *singleton, int argc, char **argv);
 long	ft_atol(const char *str);
-void	validate_values(t_stack *head);
+int		is_valid_values(t_stack *head);
 
 #endif
