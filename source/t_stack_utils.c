@@ -154,7 +154,7 @@ int is_list_sorted(t_stack *head)
     if (head)
     {
         tmp = head;
-        while (tmp)
+        while (tmp->next)
         {
             if (tmp->value > tmp->next->value)
                 return (0);
