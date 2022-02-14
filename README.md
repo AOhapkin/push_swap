@@ -152,6 +152,6 @@ typedef struct          s_list
 
 ```
 ```
-void	init_singleton(t_base *singleton, int argc, char **argv) - сохраняет параметры с типом long в лист 
+void	init_singleton(t_base *singleton, int argc, char **argv) - сохраняет параметры в лист.
 ```
 ---
