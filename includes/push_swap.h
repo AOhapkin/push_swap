@@ -37,5 +37,6 @@ void	swap_t_element(t_stack **head);
 void	init_singleton(t_base *singleton, int argc, char **argv);
 long	ft_atol(const char *str);
 int		is_valid_values(t_stack *head);
+int     is_list_sorted(t_stack *head);
 
 #endif

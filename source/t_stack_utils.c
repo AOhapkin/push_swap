@@ -146,3 +146,20 @@ void	swap_t_element(t_stack **head)
 		(*head)->next->value = head_value;
 	}
 }
+
+int is_list_sorted(t_stack *head)
+{
+    t_stack *tmp;
+
+    if (head)
+    {
+        tmp = head;
+        while (tmp->next)
+        {
+            if (tmp->value > tmp->next->value)
+                return (0);
+            tmp = tmp->next;
+        }
+    }
+    return (1);
+}
