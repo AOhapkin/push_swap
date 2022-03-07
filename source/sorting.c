@@ -50,15 +50,24 @@ int is_presorted_stack(t_base *singleton) {
             && singleton->stack_a
             && !(singleton->stack_b)
             && is_sorted_stack(singleton->first, NULL)
-            && is_sorted_stack(singleton->stack_a, singleton->last));
+            && is_sorted_stack(singleton->stack_a, singleton->last)
+            && (singleton->last == NULL || singleton->last->next == singleton->first));
 }
 
 void bubbleish_sort(t_base *singleton) {
-    while (is_presorted_stack(singleton))
+    t_stack **stack;
+
+    stack = &(singleton->stack_a);
+    while (!is_presorted_stack(singleton))
     {
-
+        while(((*stack)->value < (*stack)->next->value || (*stack) == singleton->last)
+            && !is_presorted_stack(singleton))
+            operation_handling(singleton, RA);
+        while((*stack)->value > (*stack)->next->value && (*stack) != singleton->last)
+            operation_handling(singleton, SA);
     }
-
+    while (!is_sorted_stack(singleton->stack_a, NULL))
+        operation_handling(singleton, RA);
 }
 
 void sort_stack_a_without_b(t_base* singleton)
@@ -66,14 +75,5 @@ void sort_stack_a_without_b(t_base* singleton)
     singleton->first = get_first_element(singleton->stack_a);
     singleton->last = get_last_element(singleton->stack_a);
 
-    print_singleton(singleton);
-    print_singleton(singleton);
-    operation_handling(singleton, RA);
-    operation_handling(singleton, SA);
-//    operation_handling(singleton, RA);
-    operation_handling(singleton, RA);
-    if (is_presorted_stack(singleton))
-        printf("PRESORTED !!!\n");
-//    operation_handling(singleton, RRA);
     bubbleish_sort(singleton);
 }
