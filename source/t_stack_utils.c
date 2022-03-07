@@ -121,25 +121,6 @@ void	rotate_stack(t_stack **stack)
 	}
 }
 
-void	reverse_rotate_stack(t_stack **stack)
-{
-	t_stack	*last;
-	t_stack	*prelast;
-
-	if (stack && stack_length(*stack) >= 2)
-	{
-		last = *stack;
-		prelast = *stack;
-		while (last->next)
-		{
-			prelast = last;
-			last = last->next;
-		}
-		prelast->next = NULL;
-		push_front(stack, last->value);
-	}
-}
-
 void	swap_stack(t_stack **stack)
 {
 	t_stack *new_head;

@@ -53,7 +53,6 @@ void	push_stack(t_stack **src, t_stack **dst);
 
 void	swap_stack(t_stack **stack);
 void	rotate_stack(t_stack **stack);
-void	reverse_rotate_stack(t_stack **stack);
 
 void	init_singleton(t_base *singleton, int argc, char **argv);
 long	ft_atol(const char *str);
