@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-t_stack	*find_last_t_element(t_stack *head)
+t_stack	*get_last_stack_element(t_stack *head)
 {
 	if (head)
 	{
@@ -11,7 +11,7 @@ t_stack	*find_last_t_element(t_stack *head)
 	return (0);
 }
 
-t_stack	*create_new_t_element(long value)
+t_stack	*new_stack_element(long value)
 {
 	t_stack	*new;
 
@@ -25,7 +25,7 @@ t_stack	*create_new_t_element(long value)
 	return (NULL);
 }
 
-int	size_t_element(t_stack *head)
+int	stack_length(t_stack *head)
 {
 	int		len;
 
@@ -44,12 +44,12 @@ void	push_back(t_stack **head, long value)
 
 	if (*head)
 	{
-		last_elem = find_last_t_element(*head);
-		last_elem->next = create_new_t_element(value);
+		last_elem = get_last_stack_element(*head);
+		last_elem->next = new_stack_element(value);
 	}
 	else
 	{
-		*head = create_new_t_element(value);
+		*head = new_stack_element(value);
 	}
 }
 
@@ -57,7 +57,7 @@ void	push_front(t_stack **head, long value)
 {
 	t_stack	*new_elem;
 
-	new_elem = create_new_t_element(value);
+	new_elem = new_stack_element(value);
 	if (head && new_elem)
 	{
 		new_elem->next = *head;
@@ -77,7 +77,7 @@ void	free_list(t_stack *head)
 	}
 }
 
-void	print_t_stack(t_stack *head)
+void	print_stack(t_stack *head)
 {
 	while (head)
 	{
@@ -87,7 +87,7 @@ void	print_t_stack(t_stack *head)
 	printf("\n");
 }
 
-void	push_t_element(t_stack **src, t_stack **dst)
+void	push_stack(t_stack **src, t_stack **dst)
 {
 	t_stack	*temp;
 
@@ -100,11 +100,11 @@ void	push_t_element(t_stack **src, t_stack **dst)
 	}
 }
 
-void	rotate_t_element(t_stack **head)
+void	rotate_stack(t_stack **head)
 {
 	t_stack	*temp;
 
-	if (size_t_element(*head) >= 2)
+	if (stack_length(*head) >= 2)
 	{
 		temp = *head;
 		*head = (*head)->next;
@@ -114,12 +114,12 @@ void	rotate_t_element(t_stack **head)
 	}
 }
 
-void	rotate_reverse_t_element(t_stack **head)
+void	reverse_rotate_stack(t_stack **head)
 {
 	t_stack	*last;
 	t_stack	*prelast;
 
-	if (size_t_element(*head) >= 2)
+	if (stack_length(*head) >= 2)
 	{
 		last = *head;
 		prelast = *head;
@@ -133,12 +133,12 @@ void	rotate_reverse_t_element(t_stack **head)
 	}
 }
 
-void	swap_t_element(t_stack **head)
+void	swap_stack(t_stack **head)
 {
 	long	head_value;
 	long	temp_value;
 
-	if (size_t_element(*head) >= 2)
+	if (stack_length(*head) >= 2)
 	{
 		head_value = (*head)->value;
 		temp_value = (*head)->next->value;
@@ -147,7 +147,7 @@ void	swap_t_element(t_stack **head)
 	}
 }
 
-int is_list_sorted(t_stack *head)
+int is_sorted_stack(t_stack *head)
 {
     t_stack *tmp;
 
