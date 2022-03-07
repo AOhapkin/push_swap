@@ -106,15 +106,18 @@ void	push_stack(t_stack **src, t_stack **dst)
 
 void	rotate_stack(t_stack **stack)
 {
-	t_stack	*temp;
+	t_stack	*old_head;
+	t_stack	*old_back;
 
 	if (is_stack_operable(stack))
 	{
-		temp = *stack;
-		*stack = (*stack)->next;
-		temp->next = NULL;
-		push_back(stack, temp->value);
-		free(temp);
+        old_head = *stack;
+        *stack = old_head->next;
+        old_head->next = NULL;
+        old_back = *stack;
+        while (old_back->next)
+            old_back = old_back->next;
+        old_back->next = old_head;
 	}
 }
 
@@ -152,14 +155,14 @@ void	swap_stack(t_stack **stack)
 	}
 }
 
-int is_sorted_stack(t_stack *head)
+int is_sorted_stack(t_stack *head, t_stack *tail)
 {
     t_stack *tmp;
 
     if (head)
     {
         tmp = head;
-        while (tmp->next)
+        while (tmp->next && tmp != tail)
         {
             if (tmp->value > tmp->next->value)
                 return (0);

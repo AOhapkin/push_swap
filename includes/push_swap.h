@@ -58,9 +58,10 @@ void	reverse_rotate_stack(t_stack **stack);
 void	init_singleton(t_base *singleton, int argc, char **argv);
 long	ft_atol(const char *str);
 int		is_valid_values(t_stack *head);
-int     is_sorted_stack(t_stack *head);
+int     is_sorted_stack(t_stack *head, t_stack *tail);
 void    print_singleton(t_base *singleton);
 void sort_stack_a_without_b(t_base* singleton);
 void call_function(t_base *singleton, char index);
+int is_stack_operable(t_stack **stack);
 
 #endif
