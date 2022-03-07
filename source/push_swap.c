@@ -5,21 +5,10 @@ int main(int argc, const char **argv)
 	t_base	singleton;
 
 	validate_args(argc, argv);
-	ft_bzero(&singleton, sizeof(t_base));
 	init_singleton(&singleton, argc, (char **) argv);
-//    print_stack(singleton.stack_a);
-	if (is_valid_values(singleton.stack_a))
+	if (is_valid_values(singleton.stack_a) && !is_sorted_stack(singleton.stack_a))
     {
-        print_stack(singleton.stack_a);
-//        swap_stack(&(singleton.stack_a));
-//        rotate_stack(&(singleton.stack_a));
-        reverse_rotate_stack(&(singleton.stack_a));
-        print_stack(singleton.stack_a);
-//        if (!is_sorted_stack(singleton.stack_a))
-//        {
-//        }
-
-//        printf("sorted");
+        sort_stack_a_without_b(&singleton);
     }
 
 

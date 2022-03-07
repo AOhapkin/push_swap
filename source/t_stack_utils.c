@@ -1,5 +1,9 @@
 #include "push_swap.h"
 
+int is_stack_operable(t_stack **stack) {
+    return (stack && *stack && (*stack)->next);
+}
+
 t_stack	*get_last_stack_element(t_stack *head)
 {
 	if (head)
@@ -38,30 +42,30 @@ int	stack_length(t_stack *head)
 	return (len);
 }
 
-void	push_back(t_stack **head, long value)
+void	push_back(t_stack **stack, long value)
 {
 	t_stack	*last_elem;
 
-	if (*head)
+	if (*stack)
 	{
-		last_elem = get_last_stack_element(*head);
+		last_elem = get_last_stack_element(*stack);
 		last_elem->next = new_stack_element(value);
 	}
 	else
 	{
-		*head = new_stack_element(value);
+		*stack = new_stack_element(value);
 	}
 }
 
-void	push_front(t_stack **head, long value)
+void	push_front(t_stack **stack, long value)
 {
 	t_stack	*new_elem;
 
 	new_elem = new_stack_element(value);
-	if (head && new_elem)
+	if (stack && new_elem)
 	{
-		new_elem->next = *head;
-		*head = new_elem;
+		new_elem->next = *stack;
+		*stack = new_elem;
 	}
 }
 
@@ -100,50 +104,51 @@ void	push_stack(t_stack **src, t_stack **dst)
 	}
 }
 
-void	rotate_stack(t_stack **head)
+void	rotate_stack(t_stack **stack)
 {
 	t_stack	*temp;
 
-	if (stack_length(*head) >= 2)
+	if (is_stack_operable(stack))
 	{
-		temp = *head;
-		*head = (*head)->next;
+		temp = *stack;
+		*stack = (*stack)->next;
 		temp->next = NULL;
-		push_back(head, temp->value);
+		push_back(stack, temp->value);
 		free(temp);
 	}
 }
 
-void	reverse_rotate_stack(t_stack **head)
+void	reverse_rotate_stack(t_stack **stack)
 {
 	t_stack	*last;
 	t_stack	*prelast;
 
-	if (stack_length(*head) >= 2)
+	if (stack && stack_length(*stack) >= 2)
 	{
-		last = *head;
-		prelast = *head;
+		last = *stack;
+		prelast = *stack;
 		while (last->next)
 		{
 			prelast = last;
 			last = last->next;
 		}
 		prelast->next = NULL;
-		push_front(head, last->value);
+		push_front(stack, last->value);
 	}
 }
 
-void	swap_stack(t_stack **head)
+void	swap_stack(t_stack **stack)
 {
-	long	head_value;
-	long	temp_value;
+	t_stack *new_head;
+	t_stack *old_head;
 
-	if (stack_length(*head) >= 2)
+	if (is_stack_operable(stack))
 	{
-		head_value = (*head)->value;
-		temp_value = (*head)->next->value;
-		(*head)->value = temp_value;
-		(*head)->next->value = head_value;
+		old_head = *stack;
+		new_head = (*stack)->next;
+        old_head->next = new_head->next;
+        new_head->next = old_head;
+        *stack = new_head;
 	}
 }
 

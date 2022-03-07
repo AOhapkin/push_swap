@@ -23,7 +23,8 @@ void	init_singleton(t_base *singleton, int argc, char **argv)
 	long	element;
 
 	i = 1;
-	while (i < argc)
+    ft_bzero(singleton, sizeof(t_base));
+    while (i < argc)
 	{
 		strs = ft_split(argv[i], SPACE);
 		j = 0;
