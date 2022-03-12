@@ -62,5 +62,6 @@ void    print_singleton(t_base *singleton);
 void sort_stack_a_without_b(t_base* singleton);
 void call_function(t_base *singleton, char index);
 int is_stack_operable(t_stack **stack);
+void print_operations_in_a_column(t_stack *head);
 
 #endif

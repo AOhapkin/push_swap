@@ -3,17 +3,17 @@
 void print_operation(char index)
 {
     char *operations_names[NUM_OF_OPERATIONS] = {
-            "SA",
-            "SB",
-            "SS",
-            "PA",
-            "PB",
-            "RA",
-            "RB",
-            "RR",
-            "RRA",
-            "RRB",
-            "RRR"
+            "sa",
+            "sb",
+            "ss",
+            "pa",
+            "pb",
+            "ra",
+            "rb",
+            "rr",
+            "rra",
+            "rrb",
+            "rrr"
     };
 
     if (IS_VALID_OPERATION(index))
@@ -26,7 +26,7 @@ void print_operation(char index)
     }
 };
 
-void print_operations(t_stack *head) {
+void print_operations_in_line(t_stack *head) {
     while (head)
     {
         print_operation(head->value);
@@ -47,9 +47,44 @@ void print_singleton(t_base *singleton)
     print_stack(singleton->stack_b);
     printf("-----------------------------------------------\n");
     printf("operations: ");
-    print_operations(singleton->operations);
+    print_operations_in_line(singleton->operations);
     printf("===============================================\n");
     printf("                        ||                     \n");
     printf("                        \\/                     \n");
 
+}
+
+void print_one_operation(int index)
+{
+    char *operations_names[NUM_OF_OPERATIONS] = {
+            "sa",
+            "sb",
+            "ss",
+            "pa",
+            "pb",
+            "ra",
+            "rb",
+            "rr",
+            "rra",
+            "rrb",
+            "rrr"
+    };
+
+    if (IS_VALID_OPERATION(index))
+        write(1, operations_names[index], ft_strlen(operations_names[index]));
+    else
+        write(1, "??", 2);
+    write(1, "\n",1);
+}
+
+void print_operations_in_a_column(t_stack *head)
+{
+    t_stack *curr;
+
+    curr = head;
+    while (curr)
+    {
+        print_one_operation(head->value);
+        curr = curr->next;
+    }
 }

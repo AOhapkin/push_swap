@@ -40,8 +40,9 @@ t_stack *get_last_element(t_stack *stack)
 void operation_handling(t_base *singleton, char op)
 {
     call_function(singleton, op);
-    push_front(&(singleton->operations), op);
-    print_singleton(singleton);
+//    push_front(&(singleton->operations), op);
+    push_back(&(singleton->operations), op);
+//    print_singleton(singleton);
 }
 
 
@@ -76,4 +77,6 @@ void sort_stack_a_without_b(t_base* singleton)
     singleton->last = get_last_element(singleton->stack_a);
 
     bubbleish_sort(singleton);
+
+    print_operations_in_a_column(singleton->operations);
 }

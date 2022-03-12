@@ -11,7 +11,6 @@ int main(int argc, const char **argv)
         sort_stack_a_without_b(&singleton);
     }
 
-
 //    free_list(singleton.stack_a);
 	return (0);
 }
