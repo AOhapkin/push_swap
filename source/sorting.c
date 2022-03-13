@@ -64,7 +64,9 @@ void bubbleish_sort(t_base *singleton) {
         while(((*stack)->value < (*stack)->next->value || (*stack) == singleton->last)
             && !is_presorted_stack(singleton))
             operation_handling(singleton, RA);
-        while((*stack)->value > (*stack)->next->value && (*stack) != singleton->last)
+        while((*stack)->value > (*stack)->next->value
+            && (*stack) != singleton->last
+            && !is_presorted_stack(singleton))
             operation_handling(singleton, SA);
     }
     while (!is_sorted_stack(singleton->stack_a, NULL))
