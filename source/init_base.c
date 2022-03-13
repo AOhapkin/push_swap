@@ -37,4 +37,7 @@ void	init_singleton(t_base *singleton, int argc, char **argv)
 		i++;
 	}
 	free_strs(strs);
+    singleton->first = get_first_element(singleton->stack_a);
+    singleton->last = get_last_element(singleton->stack_a);
+    singleton->size_a = get_size(singleton->stack_a);
 }

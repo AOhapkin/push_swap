@@ -40,8 +40,17 @@ typedef struct	s_base
 	t_stack	*stack_b;
     t_stack *first;
     t_stack *last;
+    int     size_a;
+    int     size_b;
 	t_stack	*operations;
 }				t_base;
+
+typedef struct  s_presort_sequence
+{
+    long head_value;
+    long tail_value;
+    int size;
+}               t_presort_sequence;
 
 void	validate_args(int argc, const char **argv);
 void	save_stack(t_stack *stack, int argc, const char **argv);
@@ -63,5 +72,9 @@ void sort_stack_a_without_b(t_base* singleton);
 void call_function(t_base *singleton, char index);
 int is_stack_operable(t_stack **stack);
 void print_operations_in_a_column(t_stack *head);
+void move_counting_sort(t_base *singleton);
+t_stack *get_first_element(t_stack *stack);
+t_stack *get_last_element(t_stack *stack);
+int get_size(t_stack *head);
 
 #endif

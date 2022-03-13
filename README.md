@@ -148,9 +148,52 @@ void	init_singleton(t_base *singleton, int argc, char **argv) - сохраняе
 
 ---
 
+## Алгоритм сортировки с подсчетом шагов для каждого элемента
+
+### Термины (напрямую связаны с неймингом в коде)
+
+* `sort` - сортированный стек/последовательность. Все элементы на своих места
+* `presort` - предотсортированный стек/последовательность. Достаточно операций `rotatte` и `reverse rotate` чтобы стек стал `sort`
+* `first` - самый большой элемент (первый)
+* `last` - самый маленький элемент (последний)
+* `sequence` - последовательность элементов стека
+* `operations` - последовательность операций
+* `A` - стек A
+* `B` - стек B
+
+### Последовательность
+
+1. найти `first`, `last`, `size`
+2. найти самую длинный `presort sequence` в `A`.
+   1. записать `presort_head_value`, `presort_tail_value`, `presorted_size` для `presort sequence` в `A`.
+3. скинуть все элементы которые не входят в `presort sequence` из `A` в `B`
+   1. допустимые команды `ra`/`pb`
+   1. пока `A->size` > `presort size`
+      1. `ra` пока (`head->value` >= `presort_head_value` && `head->value` <= `presort tail_value` && `presorted_size` < `A->size`)
+      2. `pb` пока (`head->value` < `presort_head_value` && `head->value` > `presort tail_value` && `presorted_size` < `A->size`)
+5. перенести все элементы из `B` в `A` так чтобы `A` был всегда `presort`
+   1. в цикле, пока `B` не пуст
+      1. для каждого элемента `B` найти кратчайшую `operations`  
+         1. допустимые команды `rb`/`rrb`/`pb`/`ra`/`rra`/`rrr`/`rr`/`pa`
+            1. `A`↓ - `B`↑ - `A` ← `B`
+            2. `A`↑ - `B`↓ - `A` ← `B`
+            3. `A`↓ - `B`↓ - `A` ← `B`
+               1. оптимизировать с учетом `rrr` и `rr`
+            4. `A`↑ - `B`↑ - `A` ← `B`
+               1. оптимизировать с учетом `rrr` и `rr`
+      2. выбрать кратчайшую `operations`
+      3. исполнить кратчайшую `operations`
+      4. добавить в конец итоговой последовательность кратчайшую `operations` 
+         1. `push back` кратчайшую `operations` в `singleton->operations`
+6. распечатать
+  
+---
+
 ## Bugs and TODOs
 
 * ```./push_shwap "1, 5"```
     * ```Process finished with exit code 1```
 * ```./push_shwap```
-  * ```Process finished with exit code 1```
+    * ```Process finished with exit code 1```
+
+

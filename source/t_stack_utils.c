@@ -1,5 +1,56 @@
 #include "push_swap.h"
 
+int get_size(t_stack *head)
+{
+    t_stack *curr;
+    int i;
+
+    curr = head;
+    i = 0;
+    while (curr)
+    {
+        curr = curr->next;
+        i++;
+    }
+    return (i);
+}
+
+t_stack *get_first_element(t_stack *stack)
+{
+    t_stack *smallest;
+
+    smallest = NULL;
+    if (stack) {
+        smallest = stack;
+        stack = stack->next;
+        while (stack)
+        {
+            if (smallest->value > stack->value)
+                smallest = stack;
+            stack = stack->next;
+        }
+    }
+    return smallest;
+}
+
+t_stack *get_last_element(t_stack *stack)
+{
+    t_stack *biggest;
+
+    biggest = NULL;
+    if (stack) {
+        biggest = stack;
+        stack = stack->next;
+        while (stack)
+        {
+            if (biggest->value < stack->value)
+                biggest = stack;
+            stack = stack->next;
+        }
+    }
+    return biggest;
+}
+
 int is_stack_operable(t_stack **stack) {
     return (stack && *stack && (*stack)->next);
 }

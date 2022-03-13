@@ -8,7 +8,8 @@ int main(int argc, const char **argv)
 	init_singleton(&singleton, argc, (char **) argv);
 	if (is_valid_values(singleton.stack_a) && !is_sorted_stack(singleton.stack_a, NULL))
     {
-        sort_stack_a_without_b(&singleton);
+//        sort_stack_a_without_b(&singleton);
+        move_counting_sort(&singleton);
     }
 
 //    free_list(singleton.stack_a);
