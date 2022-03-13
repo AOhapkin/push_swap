@@ -75,8 +75,7 @@ void sort_stack_a_without_b(t_base* singleton)
 {
     singleton->first = get_first_element(singleton->stack_a);
     singleton->last = get_last_element(singleton->stack_a);
-
     bubbleish_sort(singleton);
 
-    print_operations_in_a_column(singleton->operations);
+        print_operations_in_a_column(singleton->operations);
 }

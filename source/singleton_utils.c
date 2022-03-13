@@ -84,7 +84,7 @@ void print_operations_in_a_column(t_stack *head)
     curr = head;
     while (curr)
     {
-        print_one_operation(head->value);
+        print_one_operation(curr->value);
         curr = curr->next;
     }
 }

@@ -13,7 +13,7 @@
 # define INT_MIN         (-2147483647-1) // Не похоже на нормальную запись. Этот макрос будет высчитываться при каждом использовании и портить производительность.
 
 # define NUM_OF_OPERATIONS         11
-# define IS_VALID_OPERATION(X) (X < NUM_OF_OPERATIONS)
+# define IS_VALID_OPERATION(x) (x >= 0 && x <  NUM_OF_OPERATIONS)
 # define SA         0
 # define SB         1
 # define SS         2
