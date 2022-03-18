@@ -13,8 +13,8 @@ void operation_ra(t_base *singleton, char operation)
 void call_function(t_base *singleton, char index)
 {
     void (*implementations[NUM_OF_OPERATIONS])(t_base *singleton, int operation);
-    implementations[SA] = *operation_sa;
-    implementations[RA] = *operation_ra;
+    implementations[SA] = operation_sa;
+    implementations[RA] = operation_ra;
     if (IS_VALID_OPERATION(index) || index < 0)
     {
         implementations[index](singleton, index);
