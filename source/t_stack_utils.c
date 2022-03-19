@@ -140,15 +140,44 @@ int is_sorted_stack(t_stack *head, t_stack *tail)
 {
     t_stack *tmp;
 
-    if (head)
+    tmp = head;
+    while (tmp->next && tmp != tail)
     {
-        tmp = head;
-        while (tmp->next && tmp != tail)
-        {
-            if (tmp->value > tmp->next->value)
-                return (0);
-            tmp = tmp->next;
-        }
+        if (tmp->value > tmp->next->value)
+            return (0);
+        tmp = tmp->next;
     }
     return (1);
+}
+
+int get_stack_status(t_stack *head)
+{
+    t_stack *first;
+    t_stack *last;
+
+    last = head;
+    first = head;
+    if (!head)
+        return (EMPTY);
+    // finding last element in stack
+    while (last
+           && last->next
+           && (last->value < last->next->value))
+        last = last->next;
+    // check for sort
+    if (last->next == NULL)
+        return (SORTED);
+    else
+        first = last->next;
+    // check second part
+    while (first
+           && first->next
+           && (first->value < first->next->value))
+        first = first->next;
+    // check that stack head bigger than last
+    if (first->value < head->value)
+        return (PRESORTED);
+    else
+        return (NOT_SORTED);
+
 }

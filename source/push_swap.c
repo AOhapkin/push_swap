@@ -6,10 +6,10 @@ int main(int argc, const char **argv)
 
 	validate_args(argc, argv);
 	init_singleton(&singleton, argc, (char **) argv);
-	if (is_valid_values(singleton.stack_a) && !is_sorted_stack(singleton.stack_a, NULL))
-    {
-        sort_stack_a_without_b(&singleton);
-    }
+//	if (is_valid_values(singleton.stack_a) && !is_sorted_stack(singleton.stack_a, NULL))
+//    {
+        sorting(&singleton);
+//    }
 
 //    free_list(singleton.stack_a);
 	return (0);

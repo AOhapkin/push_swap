@@ -38,13 +38,15 @@ void print_operations_in_line(t_stack *head) {
 void print_singleton(t_base *singleton)
 {
     printf("================== SINGLETON ==================\n");
-    printf("FIRST element: %li\n", singleton->first ? singleton->first->value : 0);
-    printf("LAST  element: %li\n", singleton->last ? singleton->last->value : 0);
-    printf("-----------------------------------------------\n");
     printf("stack A: ");
     print_stack(singleton->stack_a);
+    int status = get_stack_status(singleton->stack_a);
+    printf("status: %s\n", status == SORTED ? "SORTED" : status == PRESORTED ? "PRESORTED" : status == NOT_SORTED ? "NOT_SORTED" : "EMPTY");
+    printf("- - - - - - - - - - - - - - - - - - - - - - - -\n");
     printf("stack B: ");
     print_stack(singleton->stack_b);
+    status = get_stack_status(singleton->stack_b);
+    printf("status: %s\n", status == SORTED ? "SORTED" : status == PRESORTED ? "PRESORTED" : status == NOT_SORTED ? "NOT_SORTED" : "EMPTY");
     printf("-----------------------------------------------\n");
     printf("operations: ");
     print_operations_in_line(singleton->operations);

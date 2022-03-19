@@ -26,7 +26,17 @@
 # define RRB        9
 # define RRR        10
 
+# define SORTED     1
+# define PRESORTED  2
+# define NOT_SORTED 0
+# define EMPTY      -1
 
+
+typedef struct       s_op
+{
+    char             op;
+    struct s_stack	*next;
+}                   t_op;
 
 typedef struct       s_stack
 {
@@ -38,9 +48,7 @@ typedef struct	s_base
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
-    t_stack *first;
-    t_stack *last;
-	t_stack	*operations;
+	t_op	*operations;
 }				t_base;
 
 void	validate_args(int argc, const char **argv);
@@ -59,9 +67,10 @@ long	ft_atol(const char *str);
 int		is_valid_values(t_stack *head);
 int     is_sorted_stack(t_stack *head, t_stack *tail);
 void    print_singleton(t_base *singleton);
-void sort_stack_a_without_b(t_base* singleton);
 void call_function(t_base *singleton, char index);
 int is_stack_operable(t_stack **stack);
 void print_operations_in_a_column(t_stack *head);
+void sorting(t_base *singleton);
+int get_stack_status(t_stack *head);
 
 #endif
