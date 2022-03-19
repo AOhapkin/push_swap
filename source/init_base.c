@@ -31,7 +31,7 @@ void	init_singleton(t_base *singleton, int argc, char **argv)
 		while (strs[j])
 		{
             value = ft_atol(strs[j]);
-            push_elements_back(&(singleton->stack_a), new_stack_element(value));
+            push_elements_back(&(singleton->stack_a), new_element(value));
 			j++;
 		}
 		i++;

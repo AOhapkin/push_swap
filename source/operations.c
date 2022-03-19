@@ -67,3 +67,16 @@ void call_operation_function(t_base *singleton, char operation_index)
     if (IS_VALID_OPERATION(operation_index) || operation_index < 0)
         implementations[operation_index](singleton);
 }
+
+void perform_operations(t_base *singleton, t_element *head)
+{
+    t_element *tmp;
+
+    tmp = head;
+    push_elements_back(&(singleton->operations), head);
+    while (tmp)
+    {
+        call_operation_function(singleton, tmp->value);
+        tmp = tmp->next;
+    }
+}

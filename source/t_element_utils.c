@@ -1,16 +1,16 @@
 #include "push_swap.h"
 
-t_stack	*get_last_element(t_stack *head)
+t_element	*get_last_element(t_element *head)
 {
     while (head->next)
         head = head->next;
     return (head);
 }
 
-t_stack	*pull_last_element(t_stack **stack)
+t_element	*pull_last_element(t_element **stack)
 {
-    t_stack *tmp;
-    t_stack *last;
+    t_element *tmp;
+    t_element *last;
 
     last = NULL;
     if (stack && *stack)
@@ -24,9 +24,9 @@ t_stack	*pull_last_element(t_stack **stack)
     return (last);
 }
 
-t_stack	*pull_first_element(t_stack **stack)
+t_element	*pull_first_element(t_element **stack)
 {
-    t_stack *first;
+    t_element *first;
 
     first = NULL;
     if (stack && *stack)
@@ -38,9 +38,9 @@ t_stack	*pull_first_element(t_stack **stack)
     return (first);
 }
 
-t_stack	*new_stack_element(long value)
+t_element	*new_element(long value)
 {
-	t_stack	*new;
+	t_element	*new;
 
 	new = malloc(sizeof(new));
 	if (new)
@@ -52,7 +52,7 @@ t_stack	*new_stack_element(long value)
 	return (NULL);
 }
 
-int	get_stack_size(t_stack *head)
+int	get_size(t_element *head)
 {
 	int		len;
 
@@ -65,9 +65,9 @@ int	get_stack_size(t_stack *head)
 	return (len);
 }
 
-void	push_elements_back(t_stack **stack, t_stack *element)
+void	push_elements_back(t_element **stack, t_element *element)
 {
-    t_stack	*last_elem;
+    t_element	*last_elem;
 
     if (*stack)
     {
@@ -78,7 +78,7 @@ void	push_elements_back(t_stack **stack, t_stack *element)
         *stack = element;
 }
 
-void	push_element_front(t_stack **stack, t_stack *element)
+void	push_element_front(t_element **stack, t_element *element)
 {
 	if (stack && element)
 	{
@@ -87,9 +87,9 @@ void	push_element_front(t_stack **stack, t_stack *element)
 	}
 }
 
-void	free_stack(t_stack *head)
+void	free_stack(t_element *head)
 {
-	t_stack	*temp;
+	t_element	*temp;
 
 	while (head != NULL)
 	{
@@ -99,7 +99,7 @@ void	free_stack(t_stack *head)
 	}
 }
 
-void	print_stack(t_stack *head)
+void	print_stack(t_element *head)
 {
 	while (head)
 	{
@@ -109,9 +109,9 @@ void	print_stack(t_stack *head)
 	printf("\n");
 }
 
-void	rotate(t_stack **stack)
+void	rotate(t_element **stack)
 {
-    t_stack	*old_head;
+    t_element	*old_head;
 
 	if (stack && *stack && (*stack)->next)
 	{
@@ -120,9 +120,9 @@ void	rotate(t_stack **stack)
 	}
 }
 
-void	reverse_rotate(t_stack **stack)
+void	reverse_rotate(t_element **stack)
 {
-    t_stack	*old_back;
+    t_element	*old_back;
 
     if (stack && *stack && (*stack)->next)
     {
@@ -131,10 +131,10 @@ void	reverse_rotate(t_stack **stack)
     }
 }
 
-void	swap(t_stack **stack)
+void	swap(t_element **stack)
 {
-	t_stack *new_head;
-	t_stack *old_head;
+	t_element *new_head;
+	t_element *old_head;
 
 	if (stack && *stack && (*stack)->next)
 	{
@@ -146,10 +146,10 @@ void	swap(t_stack **stack)
 	}
 }
 
-int get_stack_status(t_stack *head)
+int get_stack_status(t_element *head)
 {
-    t_stack *first;
-    t_stack *last;
+    t_element *first;
+    t_element *last;
 
     last = head;
     first = head;
@@ -176,4 +176,37 @@ int get_stack_status(t_stack *head)
     else
         return (NOT_SORTED);
 
+}
+
+int get_position_in_the_stack(t_element *stack, t_element *element)
+{
+    int position;
+
+    position = 0;
+    while (stack && element && stack != element)
+    {
+        position++;
+        stack = stack->next;
+    }
+    return position;
+}
+
+int get_position_to_insert(t_element *stack, t_element *element)
+{
+    int position;
+
+    position = 1;
+    while (stack && stack->next)
+    {
+        if ((stack->value < stack->next->value
+                && stack->value < element->value
+                && stack->next->value > element->value)
+            || (stack->value > stack->next->value
+                && stack->value < element->value
+                && stack->next->value < element->value))
+            return (position);
+        position++;
+        stack = stack->next;
+    }
+    return (0);
 }

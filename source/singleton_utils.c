@@ -26,7 +26,7 @@ void print_operation(char index)
     }
 };
 
-void print_operations_in_line(t_stack *head) {
+void print_operations_in_line(t_element *head) {
     while (head)
     {
         print_operation(head->value);
@@ -42,13 +42,13 @@ void print_singleton(t_base *singleton)
     print_stack(singleton->stack_a);
     int status = get_stack_status(singleton->stack_a);
     printf("status: %s\n", status == SORTED ? "SORTED" : status == PRESORTED ? "PRESORTED" : status == NOT_SORTED ? "NOT_SORTED" : "EMPTY");
-    printf("size: %i\n", get_stack_size(singleton->stack_a));
+    printf("size: %i\n", get_size(singleton->stack_a));
     printf("- - - - - - - - - - - - - - - - - - - - - - - -\n");
     printf("stack B: ");
     print_stack(singleton->stack_b);
     status = get_stack_status(singleton->stack_b);
     printf("status: %s\n", status == SORTED ? "SORTED" : status == PRESORTED ? "PRESORTED" : status == NOT_SORTED ? "NOT_SORTED" : "EMPTY");
-    printf("size: %i\n", get_stack_size(singleton->stack_b));
+    printf("size: %i\n", get_size(singleton->stack_b));
     printf("-----------------------------------------------\n");
     printf("operations: ");
     print_operations_in_line(singleton->operations);
@@ -81,9 +81,9 @@ void print_one_operation(int index)
     write(1, "\n",1);
 }
 
-void print_operations_in_a_column(t_stack *head)
+void print_operations_in_a_column(t_element *head)
 {
-    t_stack *curr;
+    t_element *curr;
 
     curr = head;
     while (curr)

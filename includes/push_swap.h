@@ -31,56 +31,73 @@
 # define NOT_SORTED 0
 # define EMPTY      -1
 
+# define RA_RB       0
+# define RRA_RRB     1
+# define RA_RRB      2
+# define RRA_RB      3
+# define NUM_VARIATIONS 4
 
-typedef struct       s_op
+typedef struct       s_element
 {
-    char            operation_index;
-    struct s_op	    *next;
-}                   t_op;
+    long             value;
+    struct s_element	*next;
+}		            t_element;
 
-typedef struct       s_stack
+
+typedef struct       s_rotations
 {
-	long             value;
-	struct s_stack	*next;
-}		            t_stack;
+    struct s_element *element;
+    int             ra;
+    int             rb;
+    int             rra;
+    int             rrb;
+    int             rrr;
+    int             rr;
+}                    t_rotations;
+
+typedef struct       s_stacks
+{
+    int             a_size;
+    int             b_size;
+}                    t_stacks;
 
 typedef struct	s_base
 {
-	t_stack	*stack_a;
-	t_stack	*stack_b;
-	t_op	*operations;
+	t_element	*stack_a;
+	t_element	*stack_b;
+    struct s_stack	*operations;
 }				t_base;
 
 void	validate_args(int argc, const char **argv);
-void	print_stack(t_stack *head);
-void	push_stack(t_stack **src, t_stack **dst);
-
-
+void	print_stack(t_element *head);
 
 void	init_singleton(t_base *singleton, int argc, char **argv);
 long	ft_atol(const char *str);
-int		is_valid_values(t_stack *head);
+int		is_valid_values(t_element *head);
 void    print_singleton(t_base *singleton);
 
-
-void    call_operation_function(t_base *singleton, char operation_index);
+void    perform_operations(t_base *singleton, t_element *head);
 void    sorting(t_base *singleton);
+t_element *get_shortest_operation_list(t_base *singleton);
+void    optimize_rotations(t_rotations *rotations);
 
-t_stack	*new_stack_element(long value);
-void	push_elements_back(t_stack **stack, t_stack *element);
-void	push_element_front(t_stack **stack, t_stack *element);
-t_stack *pull_first_element(t_stack **stack);
-t_stack *pull_last_element(t_stack **stack);
-int     get_stack_status(t_stack *head);
-int     get_stack_size(t_stack *head);
-void    free_stack(t_stack *head);
+int min(int first, int second);
+int max(int first, int second);
+int get_index_smallest_value(int *arr, int size);
 
-void	swap(t_stack **stack);
-void	rotate(t_stack **stack);
-void	reverse_rotate(t_stack **stack);
+t_element	*new_element(long value);
+void	push_elements_back(t_element **stack, t_element *element);
+void	push_element_front(t_element **stack, t_element *element);
+t_element *pull_first_element(t_element **stack);
+t_element *pull_last_element(t_element **stack);
+int     get_stack_status(t_element *head);
+int     get_size(t_element *head);
+int     get_position_in_the_stack(t_element *stack, t_element *element);
+int     get_position_to_insert(t_element *stack, t_element *element);
+void    free_stack(t_element *head);
 
-t_op	*new_operation(char operation_index);
-void    push_operations_back(t_op **dst, t_op *operations);
-void    free_operations(t_op *head);
+void	swap(t_element **stack);
+void	rotate(t_element **stack);
+void	reverse_rotate(t_element **stack);
 
 #endif

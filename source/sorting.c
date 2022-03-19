@@ -1,56 +1,43 @@
 # include "push_swap.h"
 
-t_stack *get_first_element(t_stack *stack)
-{
-    t_stack *smallest;
-
-    smallest = NULL;
-    if (stack) {
-        smallest = stack;
-        stack = stack->next;
-        while (stack)
-        {
-            if (smallest->value > stack->value)
-                smallest = stack;
-            stack = stack->next;
-        }
-    }
-    return smallest;
-}
-
-void perform_operations(t_base *singleton, t_op *head)
-{
-    t_op *tmp;
-
-    tmp = head;
-    push_operations_back(&(singleton->operations), head);
-    while (tmp)
-    {
-        call_operation_function(singleton, tmp->operation_index);
-        tmp = tmp->next;
-    }
-}
-
 void pb_while_stack_a_size_greater_three(t_base *singleton) {
     int iterations;
-    t_op *pb_operations;
+    t_element *pb_operations;
 
-    iterations = get_stack_size(singleton->stack_a) - 3;
+    iterations = get_size(singleton->stack_a) - 3;
     pb_operations = NULL;
     if (iterations > 0)
     {
         while (iterations > 0)
         {
-            push_operations_back(&pb_operations, new_operation(PB));
+            push_elements_back(&pb_operations, new_element(PB));
             iterations--;
         }
         perform_operations(singleton, pb_operations);
     }
 }
 
+void insert_sort(t_base *singleton)
+{
+    t_element *operations;
+
+    while (singleton->stack_b)
+    {
+        operations = get_shortest_operation_list(singleton);
+        perform_operations(singleton, operations);
+    }
+}
+
 void sorting(t_base* singleton)
 {
     print_singleton(singleton);
+
     pb_while_stack_a_size_greater_three(singleton);
+
+    if (get_stack_status(singleton->stack_a) == NOT_SORTED)
+        perform_operations(singleton, new_element(SA));
+
+//    insert_sort(singleton);
+    get_shortest_operation_list(singleton);
     print_singleton(singleton);
 }
