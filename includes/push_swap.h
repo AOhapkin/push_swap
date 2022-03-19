@@ -52,25 +52,33 @@ typedef struct	s_base
 }				t_base;
 
 void	validate_args(int argc, const char **argv);
-void	save_stack(t_stack *stack, int argc, const char **argv);
-void	push_back(t_stack **stack, long value);
-void	push_front(t_stack **stack, long value);
-void	free_list(t_stack *head);
 void	print_stack(t_stack *head);
 void	push_stack(t_stack **src, t_stack **dst);
 
-void	swap_stack(t_stack **stack);
-void	rotate_stack(t_stack **stack);
+
 
 void	init_singleton(t_base *singleton, int argc, char **argv);
 long	ft_atol(const char *str);
 int		is_valid_values(t_stack *head);
-int     is_sorted_stack(t_stack *head, t_stack *tail);
 void    print_singleton(t_base *singleton);
-void call_function(t_base *singleton, char index);
-int is_stack_operable(t_stack **stack);
-void print_operations_in_a_column(t_stack *head);
-void sorting(t_base *singleton);
-int get_stack_status(t_stack *head);
+
+
+void    call_function(t_base *singleton, char operation_index);
+void    sorting(t_base *singleton);
+
+t_stack	*new_stack_element(long value);
+void	push_elements_back(t_stack **stack, t_stack *element);
+void	push_element_front(t_stack **stack, t_stack *element);
+t_stack *pull_first_element(t_stack **stack);
+t_stack *pull_last_element(t_stack **stack);
+int     get_stack_status(t_stack *head);
+int     get_stack_size(t_stack *head);
+void    free_stack(t_stack *head);
+
+void	swap(t_stack **stack);
+void	rotate(t_stack **stack);
+void	reverse_rotate(t_stack **stack);
+
+
 
 #endif

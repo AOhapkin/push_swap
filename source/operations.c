@@ -1,22 +1,69 @@
 # include "push_swap.h"
 
-void operation_sa(t_base *singleton, char operation)
+void sa(t_base *singleton)
 {
-    swap_stack(&(singleton->stack_a));
+    swap(&(singleton->stack_a));
 }
 
-void operation_ra(t_base *singleton, char operation)
+void pb(t_base *singleton)
 {
-    rotate_stack(&(singleton->stack_a));
+    push_element_front(
+            &(singleton->stack_b),
+            pull_first_element(&(singleton->stack_a))
+    );
 }
 
-void call_function(t_base *singleton, char index)
+void ra(t_base *singleton)
 {
-    void (*implementations[NUM_OF_OPERATIONS])(t_base *singleton, int operation);
-    implementations[SA] = operation_sa;
-    implementations[RA] = operation_ra;
-    if (IS_VALID_OPERATION(index) || index < 0)
-    {
-        implementations[index](singleton, index);
-    }
+    rotate(&(singleton->stack_a));
+}
+
+void rra(t_base *singleton)
+{
+    reverse_rotate(&(singleton->stack_a));
+}
+
+void pa(t_base *singleton) {
+    push_element_front(
+            &(singleton->stack_a),
+            pull_first_element(&(singleton->stack_b))
+    );
+}
+
+void rb(t_base *singleton)
+{
+    rotate(&(singleton->stack_b));
+}
+
+void rrb(t_base *singleton)
+{
+    reverse_rotate(&(singleton->stack_b));
+}
+
+void rr(t_base *singleton)
+{
+    rotate(&(singleton->stack_b));
+    rotate(&(singleton->stack_a));
+}
+
+void rrr(t_base *singleton)
+{
+    reverse_rotate(&(singleton->stack_b));
+    reverse_rotate(&(singleton->stack_a));
+}
+
+void call_function(t_base *singleton, char operation_index)
+{
+    void (*implementations[NUM_OF_OPERATIONS])(t_base *singleton);
+    implementations[SA] = sa;
+    implementations[PB] = pb;
+    implementations[RA] = ra;
+    implementations[RRA] = rra;
+    implementations[PA] = pa;
+    implementations[RB] = rb;
+    implementations[RRB] = rrb;
+    implementations[RR] = rr;
+    implementations[RRR] = rrr;
+    if (IS_VALID_OPERATION(operation_index) || operation_index < 0)
+        implementations[operation_index](singleton);
 }

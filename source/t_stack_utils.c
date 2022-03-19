@@ -1,18 +1,41 @@
 #include "push_swap.h"
 
-int is_stack_operable(t_stack **stack) {
-    return (stack && *stack && (*stack)->next);
+t_stack	*get_last_element(t_stack *head)
+{
+    while (head->next)
+        head = head->next;
+    return (head);
 }
 
-t_stack	*get_last_stack_element(t_stack *head)
+t_stack	*pull_last_element(t_stack **stack)
 {
-	if (head)
-	{
-		while (head->next != 0)
-			head = head->next;
-		return (head);
-	}
-	return (0);
+    t_stack *tmp;
+    t_stack *last;
+
+    last = NULL;
+    if (stack && *stack)
+    {
+        tmp = *stack;
+        while (tmp && tmp->next && tmp->next->next)
+            tmp = tmp->next;
+        last = tmp->next;
+        tmp->next = NULL;
+    }
+    return (last);
+}
+
+t_stack	*pull_first_element(t_stack **stack)
+{
+    t_stack *first;
+
+    first = NULL;
+    if (stack && *stack)
+    {
+        first = *stack;
+        *stack = first->next;
+        first->next = NULL;
+    }
+    return (first);
 }
 
 t_stack	*new_stack_element(long value)
@@ -29,7 +52,7 @@ t_stack	*new_stack_element(long value)
 	return (NULL);
 }
 
-int	stack_length(t_stack *head)
+int	get_stack_size(t_stack *head)
 {
 	int		len;
 
@@ -42,34 +65,29 @@ int	stack_length(t_stack *head)
 	return (len);
 }
 
-void	push_back(t_stack **stack, long value)
+void	push_elements_back(t_stack **stack, t_stack *element)
 {
-	t_stack	*last_elem;
+    t_stack	*last_elem;
 
-	if (*stack)
+    if (*stack)
+    {
+        last_elem = get_last_element(*stack);
+        last_elem->next = element;
+    }
+    else
+        *stack = element;
+}
+
+void	push_element_front(t_stack **stack, t_stack *element)
+{
+	if (stack && element)
 	{
-		last_elem = get_last_stack_element(*stack);
-		last_elem->next = new_stack_element(value);
-	}
-	else
-	{
-		*stack = new_stack_element(value);
+		element->next = *stack;
+		*stack = element;
 	}
 }
 
-void	push_front(t_stack **stack, long value)
-{
-	t_stack	*new_elem;
-
-	new_elem = new_stack_element(value);
-	if (stack && new_elem)
-	{
-		new_elem->next = *stack;
-		*stack = new_elem;
-	}
-}
-
-void	free_list(t_stack *head)
+void	free_stack(t_stack *head)
 {
 	t_stack	*temp;
 
@@ -91,42 +109,34 @@ void	print_stack(t_stack *head)
 	printf("\n");
 }
 
-void	push_stack(t_stack **src, t_stack **dst)
+void	rotate(t_stack **stack)
 {
-	t_stack	*temp;
+    t_stack	*old_head;
 
-	if (src)
+	if (stack && *stack && (*stack)->next)
 	{
-		temp = *src;
-		*src = (*src)->next;
-		temp->next = *dst;
-		*dst = temp;
+        old_head = pull_first_element(stack);
+        push_elements_back(stack, old_head);
 	}
 }
 
-void	rotate_stack(t_stack **stack)
+void	reverse_rotate(t_stack **stack)
 {
-	t_stack	*old_head;
-	t_stack	*old_back;
+    t_stack	*old_back;
 
-	if (is_stack_operable(stack))
-	{
-        old_head = *stack;
-        *stack = old_head->next;
-        old_head->next = NULL;
-        old_back = *stack;
-        while (old_back->next)
-            old_back = old_back->next;
-        old_back->next = old_head;
-	}
+    if (stack && *stack && (*stack)->next)
+    {
+        old_back = pull_last_element(stack);
+        push_element_front(stack, old_back);
+    }
 }
 
-void	swap_stack(t_stack **stack)
+void	swap(t_stack **stack)
 {
 	t_stack *new_head;
 	t_stack *old_head;
 
-	if (is_stack_operable(stack))
+	if (stack && *stack && (*stack)->next)
 	{
 		old_head = *stack;
 		new_head = (*stack)->next;
@@ -134,20 +144,6 @@ void	swap_stack(t_stack **stack)
         new_head->next = old_head;
         *stack = new_head;
 	}
-}
-
-int is_sorted_stack(t_stack *head, t_stack *tail)
-{
-    t_stack *tmp;
-
-    tmp = head;
-    while (tmp->next && tmp != tail)
-    {
-        if (tmp->value > tmp->next->value)
-            return (0);
-        tmp = tmp->next;
-    }
-    return (1);
 }
 
 int get_stack_status(t_stack *head)

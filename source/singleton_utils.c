@@ -42,11 +42,13 @@ void print_singleton(t_base *singleton)
     print_stack(singleton->stack_a);
     int status = get_stack_status(singleton->stack_a);
     printf("status: %s\n", status == SORTED ? "SORTED" : status == PRESORTED ? "PRESORTED" : status == NOT_SORTED ? "NOT_SORTED" : "EMPTY");
+    printf("size: %i\n", get_stack_size(singleton->stack_a));
     printf("- - - - - - - - - - - - - - - - - - - - - - - -\n");
     printf("stack B: ");
     print_stack(singleton->stack_b);
     status = get_stack_status(singleton->stack_b);
     printf("status: %s\n", status == SORTED ? "SORTED" : status == PRESORTED ? "PRESORTED" : status == NOT_SORTED ? "NOT_SORTED" : "EMPTY");
+    printf("size: %i\n", get_stack_size(singleton->stack_b));
     printf("-----------------------------------------------\n");
     printf("operations: ");
     print_operations_in_line(singleton->operations);
