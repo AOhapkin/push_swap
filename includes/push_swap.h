@@ -34,8 +34,8 @@
 
 typedef struct       s_op
 {
-    char             op;
-    struct s_stack	*next;
+    char            operation_index;
+    struct s_op	    *next;
 }                   t_op;
 
 typedef struct       s_stack
@@ -63,7 +63,7 @@ int		is_valid_values(t_stack *head);
 void    print_singleton(t_base *singleton);
 
 
-void    call_function(t_base *singleton, char operation_index);
+void    call_operation_function(t_base *singleton, char operation_index);
 void    sorting(t_base *singleton);
 
 t_stack	*new_stack_element(long value);
@@ -79,6 +79,8 @@ void	swap(t_stack **stack);
 void	rotate(t_stack **stack);
 void	reverse_rotate(t_stack **stack);
 
-
+t_op	*new_operation(char operation_index);
+void    push_operations_back(t_op **dst, t_op *operations);
+void    free_operations(t_op *head);
 
 #endif

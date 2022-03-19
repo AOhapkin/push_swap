@@ -52,7 +52,7 @@ void rrr(t_base *singleton)
     reverse_rotate(&(singleton->stack_a));
 }
 
-void call_function(t_base *singleton, char operation_index)
+void call_operation_function(t_base *singleton, char operation_index)
 {
     void (*implementations[NUM_OF_OPERATIONS])(t_base *singleton);
     implementations[SA] = sa;

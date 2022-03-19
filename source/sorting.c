@@ -18,45 +18,39 @@ t_stack *get_first_element(t_stack *stack)
     return smallest;
 }
 
-void operation_handling(t_base *singleton, char op)
+void perform_operations(t_base *singleton, t_op *head)
 {
-    call_function(singleton, op);
-//    push_front(&(singleton->operations), op);
-//    push_elements_back(&(singleton->operations), op);
-//    print_singleton(singleton);
+    t_op *tmp;
+
+    tmp = head;
+    push_operations_back(&(singleton->operations), head);
+    while (tmp)
+    {
+        call_operation_function(singleton, tmp->operation_index);
+        tmp = tmp->next;
+    }
 }
 
 void pb_while_stack_a_size_greater_three(t_base *singleton) {
     int iterations;
+    t_op *pb_operations;
 
     iterations = get_stack_size(singleton->stack_a) - 3;
-//    while (iterations > 0)
-//        operation_handling(singleton, );
+    pb_operations = NULL;
+    if (iterations > 0)
+    {
+        while (iterations > 0)
+        {
+            push_operations_back(&pb_operations, new_operation(PB));
+            iterations--;
+        }
+        perform_operations(singleton, pb_operations);
+    }
 }
 
 void sorting(t_base* singleton)
 {
-
     print_singleton(singleton);
-    operation_handling(singleton, SA);
-    print_singleton(singleton);
-    operation_handling(singleton, RA);
-    print_singleton(singleton);
-    operation_handling(singleton, RRA);
-    print_singleton(singleton);
-    operation_handling(singleton, PB);
-    operation_handling(singleton, PB);
-    operation_handling(singleton, PB);
-    operation_handling(singleton, PB);
-    print_singleton(singleton);
-    operation_handling(singleton, RB);
-    print_singleton(singleton);
-    operation_handling(singleton, RRB);
-    print_singleton(singleton);
-    operation_handling(singleton, RR);
-    print_singleton(singleton);
-    operation_handling(singleton, RRR);
-    print_singleton(singleton);
-    operation_handling(singleton, PA);
+    pb_while_stack_a_size_greater_three(singleton);
     print_singleton(singleton);
 }
