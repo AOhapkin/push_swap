@@ -77,8 +77,13 @@ int		free_singleton(t_base *singleton);
 
 void    perform_operations(t_base *singleton, t_element *head);
 void    sorting(t_base *singleton);
+
 t_element *get_shortest_operation_list(t_base *singleton);
 void    optimize_rotations(t_rotations *rotations);
+void    ra_rb_optimization(t_rotations* rotations);
+void    rra_rrb_optimization(t_rotations* rotations);
+void    ra_rrb_optimization(t_rotations* rotations);
+void    rra_rb_optimization(t_rotations* rotations);
 
 void ra(t_base *singleton);
 void rra(t_base *singleton);
