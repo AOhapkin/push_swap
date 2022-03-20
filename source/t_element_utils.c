@@ -87,7 +87,7 @@ void	push_element_front(t_element **stack, t_element *element)
 	}
 }
 
-void	free_stack(t_element *head)
+void	free_list_of_elements(t_element *head)
 {
 	t_element	*temp;
 
@@ -99,15 +99,6 @@ void	free_stack(t_element *head)
 	}
 }
 
-void	print_stack(t_element *head)
-{
-	while (head)
-	{
-		printf("%ld ", head->value);
-		head = head->next;
-	}
-	printf("\n");
-}
 
 void	rotate(t_element **stack)
 {

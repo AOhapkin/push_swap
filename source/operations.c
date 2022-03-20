@@ -80,3 +80,36 @@ void perform_operations(t_base *singleton, t_element *head)
         tmp = tmp->next;
     }
 }
+
+void write_operation(long operation_index) {
+    char *operations_names[NUM_OF_OPERATIONS] = {
+            "sa",
+            "sb",
+            "ss",
+            "pa",
+            "pb",
+            "ra",
+            "rb",
+            "rr",
+            "rra",
+            "rrb",
+            "rrr"
+    };
+
+    if (IS_VALID_OPERATION(operation_index))
+        write(1, operations_names[operation_index], ft_strlen(operations_names[operation_index]));
+    else
+        write(1, "??", 2);
+}
+
+void print_operations_on_column(t_base *singleton)
+{
+    t_element *tmp;
+
+    tmp = singleton->operations;
+    while (tmp) {
+        write_operation(tmp->value);
+        write(1, "\n", 1);
+        tmp = tmp->next;
+    }
+}

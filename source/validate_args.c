@@ -46,7 +46,6 @@ void validate_args(int argc, const char **argv)
 			checkArgumentChars(argv[i]);
 			i++;
 		}
-
 	}
 	else
 		exit(EXIT_SUCCESS);

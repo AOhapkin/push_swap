@@ -65,16 +65,15 @@ typedef struct	s_base
 {
 	t_element	*stack_a;
 	t_element	*stack_b;
-    struct s_stack	*operations;
+    t_element	*operations;
 }				t_base;
 
 void	validate_args(int argc, const char **argv);
-void	print_stack(t_element *head);
 
 void	init_singleton(t_base *singleton, int argc, char **argv);
 long	ft_atol(const char *str);
 int		is_valid_values(t_element *head);
-void    print_singleton(t_base *singleton);
+int		free_singleton(t_base *singleton);
 
 void    perform_operations(t_base *singleton, t_element *head);
 void    sorting(t_base *singleton);
@@ -94,10 +93,13 @@ int     get_stack_status(t_element *head);
 int     get_size(t_element *head);
 int     get_position_in_the_stack(t_element *stack, t_element *element);
 int     get_position_to_insert(t_element *stack, t_element *element);
-void    free_stack(t_element *head);
+void    free_list_of_elements(t_element *head);
 
 void	swap(t_element **stack);
 void	rotate(t_element **stack);
 void	reverse_rotate(t_element **stack);
+
+void print_operations_on_column(t_base *singleton);
+
 
 #endif
