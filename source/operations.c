@@ -1,6 +1,6 @@
 # include "push_swap.h"
 
-void call_operation_function(t_base *singleton, char operation_index)
+void call_operation_function(t_base *singleton, int operation_index)
 {
     void (*implementations[NUM_OF_OPERATIONS])(t_base *singleton);
     implementations[SA] = sa;

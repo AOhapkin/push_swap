@@ -13,7 +13,6 @@ void set_operations_to_rotations(t_rotations *rotations, int variation_index)
 
 void optimize_rotations(t_rotations *rotations) {
     int		r[NUM_VARIATIONS];
-    int     optimal;
 
     r[RA_RB] = max(rotations->ra, rotations->rb);
     r[RRA_RRB] = max(rotations->rra, rotations->rrb);
