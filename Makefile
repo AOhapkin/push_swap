@@ -42,7 +42,7 @@ INC_HEADERS = -I $(INC_PSW) -I $(LIB_DIR)
 
 all: $(NAME)
 
-$(NAME): $(DIR_O) lib $(OBJS)
+$(NAME): $(DIR_O) $(LIB) $(OBJS)
 	$(CC) $(FLAGS) $(OBJS) $(INC_HEADERS) $(INC_LIBS) -o $@
 
 $(DIR_O):
