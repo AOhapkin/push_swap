@@ -1,57 +1,5 @@
 # include "push_swap.h"
 
-void sa(t_base *singleton)
-{
-    swap(&(singleton->stack_a));
-}
-
-void pb(t_base *singleton)
-{
-    push_element_front(
-            &(singleton->stack_b),
-            pull_first_element(&(singleton->stack_a))
-    );
-}
-
-void ra(t_base *singleton)
-{
-    rotate(&(singleton->stack_a));
-}
-
-void rra(t_base *singleton)
-{
-    reverse_rotate(&(singleton->stack_a));
-}
-
-void pa(t_base *singleton) {
-    push_element_front(
-            &(singleton->stack_a),
-            pull_first_element(&(singleton->stack_b))
-    );
-}
-
-void rb(t_base *singleton)
-{
-    rotate(&(singleton->stack_b));
-}
-
-void rrb(t_base *singleton)
-{
-    reverse_rotate(&(singleton->stack_b));
-}
-
-void rr(t_base *singleton)
-{
-    rotate(&(singleton->stack_b));
-    rotate(&(singleton->stack_a));
-}
-
-void rrr(t_base *singleton)
-{
-    reverse_rotate(&(singleton->stack_b));
-    reverse_rotate(&(singleton->stack_a));
-}
-
 void call_operation_function(t_base *singleton, char operation_index)
 {
     void (*implementations[NUM_OF_OPERATIONS])(t_base *singleton);

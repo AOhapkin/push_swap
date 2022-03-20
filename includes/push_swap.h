@@ -80,6 +80,18 @@ void    sorting(t_base *singleton);
 t_element *get_shortest_operation_list(t_base *singleton);
 void    optimize_rotations(t_rotations *rotations);
 
+void ra(t_base *singleton);
+void rra(t_base *singleton);
+void rb(t_base *singleton);
+void rrb(t_base *singleton);
+
+void sa(t_base *singleton);
+void pb(t_base *singleton);
+void pa(t_base *singleton);
+
+void rr(t_base *singleton);
+void rrr(t_base *singleton);
+
 int min(int first, int second);
 int max(int first, int second);
 int get_index_smallest_value(int *arr, int size);
