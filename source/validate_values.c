@@ -7,9 +7,9 @@ int isInteger(long value)
 	return (0);
 }
 
-int	inspect_numbers(t_stack *head)
+int	inspect_numbers(t_element *head)
 {
-	t_stack	*tmp;
+	t_element	*tmp;
 
 	tmp = head;
 	while (tmp)
@@ -21,10 +21,10 @@ int	inspect_numbers(t_stack *head)
     return (1);
 }
 
-int count_dublicates(t_stack *head)
+int count_dublicates(t_element *head)
 {
     int i;
-    t_stack *tmp;
+    t_element *tmp;
     long    value;
 
     i = 0;
@@ -39,9 +39,9 @@ int count_dublicates(t_stack *head)
     return (i);
 }
 
-int check_for_dublicates(t_stack *head)
+int check_for_dublicates(t_element *head)
 {
-    t_stack *tmp;
+    t_element *tmp;
 
     tmp = head;
     while (tmp)
@@ -53,7 +53,7 @@ int check_for_dublicates(t_stack *head)
     return (1);
 }
 
-int	is_valid_values(t_stack *head)
+int	is_valid_values(t_element *head)
 {
 	if (!inspect_numbers(head))
 		return (0);

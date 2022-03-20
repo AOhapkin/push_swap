@@ -27,7 +27,7 @@ void checkArgumentChars(const char *string)
 	while (*arg)
 	{
 		if (!checkNextChar(arg))
-			exit(EXIT_FAILURE);
+			exit(EXIT_SUCCESS);
 		arg++;
 	}
 }
@@ -42,12 +42,11 @@ void validate_args(int argc, const char **argv)
 		while (argv[i])
 		{
 			if (ft_strlen(argv[i]) == 0)
-				exit(EXIT_FAILURE);
+				exit(EXIT_SUCCESS);
 			checkArgumentChars(argv[i]);
 			i++;
 		}
-
 	}
 	else
-		exit(EXIT_FAILURE);
+		exit(EXIT_SUCCESS);
 }
