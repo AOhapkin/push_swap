@@ -51,7 +51,6 @@ void rotate_or_reverse_rotate_while_presort(t_base *singleton) {
 
 void sorting(t_base* singleton)
 {
-
     pb_while_stack_a_size_greater_three(singleton);
 
     if (get_stack_status(singleton->stack_a) == NOT_SORTED)
@@ -61,5 +60,4 @@ void sorting(t_base* singleton)
     rotate_or_reverse_rotate_while_presort(singleton);
     print_operations_on_column(singleton);
 //    print_singleton(singleton);
-
 }

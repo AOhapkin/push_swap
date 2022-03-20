@@ -39,7 +39,7 @@ void	init_singleton(t_base *singleton, int argc, char **argv)
     free_strs(strs);
 }
 
-int		free_singleton(t_base *singleton)
+void		free_singleton(t_base *singleton)
 {
     free_list_of_elements(singleton->stack_a);
     free_list_of_elements(singleton->stack_b);

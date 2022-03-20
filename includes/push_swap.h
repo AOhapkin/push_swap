@@ -70,10 +70,14 @@ typedef struct	s_base
 
 void	validate_args(int argc, const char **argv);
 
+int min(int first, int second);
+int max(int first, int second);
+int get_index_smallest_value(int *arr, int size);
+
 void	init_singleton(t_base *singleton, int argc, char **argv);
 long	ft_atol(const char *str);
 int		is_valid_values(t_element *head);
-int		free_singleton(t_base *singleton);
+void    free_singleton(t_base *singleton);
 
 void    perform_operations(t_base *singleton, t_element *head);
 void    sorting(t_base *singleton);
