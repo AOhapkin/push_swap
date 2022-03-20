@@ -171,7 +171,7 @@ int get_stack_status(t_element *head)
            && (first->value < first->next->value))
         first = first->next;
     // check that stack head bigger than last
-    if (first->value < head->value)
+    if (first->value < head->value && !first->next)
         return (PRESORTED);
     else
         return (NOT_SORTED);
@@ -202,8 +202,10 @@ int get_position_to_insert(t_element *stack, t_element *element)
                 && stack->value < element->value
                 && stack->next->value > element->value)
             || (stack->value > stack->next->value
-                && stack->value < element->value
-                && stack->next->value < element->value))
+                && ((stack->value < element->value
+                        && stack->next->value < element->value)
+                    || (stack->value > element->value
+                       && stack->next->value > element->value))))
             return (position);
         position++;
         stack = stack->next;

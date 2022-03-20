@@ -19,7 +19,7 @@ void ra_rb_optimization(t_rotations* rotations)
 
 void rra_rrb_optimization(t_rotations* rotations)
 {
-    if (rotations->rra < rotations->rrb)
+    if (rotations->rrb > rotations->rra)
     {
         rotations->rrb = rotations->rrb - rotations->rra;
         rotations->rra = 0;

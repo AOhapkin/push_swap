@@ -25,19 +25,22 @@ void insert_sort(t_base *singleton)
     {
         operations = get_shortest_operation_list(singleton);
         perform_operations(singleton, operations);
+        print_singleton(singleton);
     }
 }
 
 void sorting(t_base* singleton)
 {
-    print_singleton(singleton);
 
     pb_while_stack_a_size_greater_three(singleton);
 
+//    print_singleton(singleton);
     if (get_stack_status(singleton->stack_a) == NOT_SORTED)
         perform_operations(singleton, new_element(SA));
 
-//    insert_sort(singleton);
-    get_shortest_operation_list(singleton);
     print_singleton(singleton);
+    printf("|||||||||||||||||||||||||||||||||||||||||||||||||||||||\n");
+    insert_sort(singleton);
+//    get_shortest_operation_list(singleton);
+//    print_singleton(singleton);
 }

@@ -53,6 +53,8 @@ void print_singleton(t_base *singleton)
     printf("operations: ");
     print_operations_in_line(singleton->operations);
     printf("===============================================\n");
+//    if (get_stack_status(singleton->stack_a) < PRESORTED)
+//        exit(0);
     printf("                        ||                     \n");
     printf("                        \\/                     \n");
 
