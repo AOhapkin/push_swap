@@ -1,7 +1,7 @@
 NAME = push_swap
 
-LIB_DIR = ./libft
-LIB = $(LIB_DIR)/libft.a
+#LIB_DIR = ./libft
+#LIB = $(LIB_DIR)/libft.a
 INC_PSW = ./includes
 
 HEADER_PSW = $(INC_PSW)/push_swap.h
@@ -28,6 +28,17 @@ C_FILES = ft_atol.c\
 		  t_element_utils_part_three.c\
 		  validate_args.c\
 		  validate_values.c\
+		  ft_bzero.c\
+		  ft_isspace.c\
+		  ft_isdigit.c\
+		  ft_strlen.c\
+		  ft_split.c\
+		  ft_strchr.c\
+		  ft_substr.c\
+		  ft_newstr.c\
+		  ft_memalloc.c\
+		  ft_memset.c\
+
 
 SRCS = $(addprefix $(DIR_S)/,$(C_FILES))
 OBJS = $(addprefix $(DIR_O)/,$(C_FILES:.c=.o))
@@ -35,28 +46,28 @@ OBJS = $(addprefix $(DIR_O)/,$(C_FILES:.c=.o))
 # flags
 CC = gcc
 FLAGS = -Wall -Werror -Wextra -g
-INC_LIBS = -L $(LIB_DIR) -lft
-INC_HEADERS = -I $(INC_PSW) -I $(LIB_DIR)
+#INC_LIBS = -L $(LIB_DIR) -lft
+INC_HEADERS = -I $(INC_PSW)
 
 .PHONY: all clean fclean re lib
 
 all: $(NAME)
 
-$(NAME): $(DIR_O) $(LIB) $(OBJS)
-	$(CC) $(FLAGS) $(OBJS) $(INC_HEADERS) $(INC_LIBS) -o $@
+$(NAME): $(DIR_O) $(OBJS)
+	$(CC) $(FLAGS) $(OBJS) $(INC_HEADERS) -o $@
 
 $(DIR_O):
 	mkdir -p $(DIR_O)
 
-$(LIB):
-	make -C ./libft
+#$(LIB):
+#	make -C ./libft
 
 $(DIR_O)/%.o: $(DIR_S)/%.c $(HEADER_PSW)
-	$(CC) $(FLAGS) -I $(INC_PSW) -I $(LIB_DIR) -c ./$< -o $@
+	$(CC) $(FLAGS) -I $(INC_PSW) -c ./$< -o $@
 
 clean:
 	rm -rf $(DIR_O)
-	make -C ./libft fclean
+	#make -C ./libft fclean
 
 fclean: clean
 	rm -f $(NAME)

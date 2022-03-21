@@ -29,7 +29,6 @@ void	push_element_front(t_element **stack, t_element *element)
     }
 }
 
-
 int get_position_in_the_stack(t_element *stack, t_element *element)
 {
     int position;

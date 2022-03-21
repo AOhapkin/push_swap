@@ -1,8 +1,9 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "libft.h"
 # include "stdio.h"
+# include "unistd.h"
+# include "stdlib.h"
 
 # define SPACE						' '
 # define VALID_CHARS_AFTER_SPACE	" -+1234567890"
@@ -122,5 +123,15 @@ void	reverse_rotate(t_element **stack);
 
 void print_operations_on_column(t_base *singleton);
 
+void	ft_bzero(void *b, size_t len);
+int		ft_isspace(int c);
+int		ft_isdigit(int c);
+size_t	ft_strlen(const char *str);
+char	**ft_split(char const *s, char c);
+char	*ft_strchr(const char *str, int c);
+char	*ft_substr(char const *str, unsigned int start, size_t len);
+char	*ft_newstr(size_t size);
+void	*ft_memalloc(size_t size);
+void	*ft_memset(void *dest, int c, size_t count);
 
 #endif
