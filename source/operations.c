@@ -25,7 +25,7 @@ void	call_operation_function(t_base *singleton, int operation_index)
 	implementations[RRB] = rrb;
 	implementations[RR] = rr;
 	implementations[RRR] = rrr;
-	if (IS_VALID_OPERATION(operation_index) || operation_index < 0)
+	if (is_valid_operation(operation_index) || operation_index < 0)
 		implementations[operation_index](singleton);
 }
 
@@ -55,7 +55,7 @@ void	write_operation(long operation_index)
 	operations_names[RRB] = "rrb";
 	operations_names[RR] = "rr";
 	operations_names[RRR] = "rrr";
-	if (IS_VALID_OPERATION(operation_index))
+	if (is_valid_operation(operation_index))
 		write(1, operations_names[operation_index],
 			ft_strlen(operations_names[operation_index]));
 	else

@@ -12,6 +12,11 @@
 
 #include "push_swap.h"
 
+int	is_valid_operation(long operation_index)
+{
+	return (operation_index >= 0 && operation_index < NUM_OF_OPERATIONS);
+}
+
 int	min(int first, int second)
 {
 	if (first > second)
