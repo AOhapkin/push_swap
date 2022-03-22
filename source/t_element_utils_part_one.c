@@ -1,6 +1,5 @@
 #include "push_swap.h"
 
-
 t_element	*new_element(long value)
 {
 	t_element	*new;
@@ -17,7 +16,7 @@ t_element	*new_element(long value)
 
 int	get_size(t_element *head)
 {
-	int		len;
+	int	len;
 
 	len = 0;
 	while (head != NULL)
@@ -40,34 +39,29 @@ void	free_list_of_elements(t_element *head)
 	}
 }
 
-int get_stack_status(t_element *head)
+int	get_stack_status(t_element *head)
 {
-    t_element *first;
-    t_element *last;
+	t_element	*first;
+	t_element	*last;
 
-    last = head;
-    first = head;
-    if (!head)
-        return (EMPTY);
-    // finding last element in stack
-    while (last
-           && last->next
-           && (last->value < last->next->value))
-        last = last->next;
-    // check for sort
-    if (last->next == NULL)
-        return (SORTED);
-    else
-        first = last->next;
-    // check second part
-    while (first
-           && first->next
-           && (first->value < first->next->value))
-        first = first->next;
-    // check that stack head bigger than last
-    if (first->value < head->value && !first->next)
-        return (PRESORTED);
-    else
-        return (NOT_SORTED);
-
+	last = head;
+	first = head;
+	if (!head)
+		return (EMPTY);
+	while (last
+		&& last->next
+		&& (last->value < last->next->value))
+		last = last->next;
+	if (last->next == NULL)
+		return (SORTED);
+	else
+		first = last->next;
+	while (first
+		&& first->next
+		&& (first->value < first->next->value))
+		first = first->next;
+	if (first->value < head->value && !first->next)
+		return (PRESORTED);
+	else
+		return (NOT_SORTED);
 }

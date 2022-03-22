@@ -1,40 +1,40 @@
 #include "push_swap.h"
 
-int checkNextChar(const char *str)
+int	check_next_char(const char *str)
 {
-	char currentChar;
-	char nextChar;
+	char	current_char;
+	char	next_char;
 
-	currentChar = *str;
-	nextChar = *(str + 1);
-	if (currentChar == SPACE
-		&& ft_strchr(VALID_CHARS_AFTER_SPACE, nextChar))
+	current_char = *str;
+	next_char = *(str + 1);
+	if (current_char == SPACE
+		&& ft_strchr(VALID_CHARS_AFTER_SPACE, next_char))
 		return (1);
-	else if (ft_strchr(ARITHMETICAL_CHARS, currentChar)
-			 && ft_isdigit(nextChar))
+	else if (ft_strchr(ARITHMETICAL_CHARS, current_char)
+		&& ft_isdigit(next_char))
 		return (1);
-	else if (ft_isdigit(currentChar)
-			 && ft_strchr(VALID_CHARS_AFTER_DIGIT, nextChar))
+	else if (ft_isdigit(current_char)
+		&& ft_strchr(VALID_CHARS_AFTER_DIGIT, next_char))
 		return (1);
 	return (0);
 }
 
-void checkArgumentChars(const char *string)
+void	check_argument_chars(const char *string)
 {
-	char *arg;
+	char	*arg;
 
 	arg = (char *)string;
 	while (*arg)
 	{
-		if (!checkNextChar(arg))
+		if (!check_next_char(arg))
 			exit(EXIT_SUCCESS);
 		arg++;
 	}
 }
 
-void validate_args(int argc, const char **argv)
+void	validate_args(int argc, const char **argv)
 {
-	int i;
+	int	i;
 
 	if (argc >= 2)
 	{
@@ -43,7 +43,7 @@ void validate_args(int argc, const char **argv)
 		{
 			if (ft_strlen(argv[i]) == 0)
 				exit(EXIT_SUCCESS);
-			checkArgumentChars(argv[i]);
+			check_argument_chars(argv[i]);
 			i++;
 		}
 	}

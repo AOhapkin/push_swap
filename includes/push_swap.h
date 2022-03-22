@@ -11,7 +11,7 @@
 # define ARITHMETICAL_CHARS			"-+"
 
 # define INT_MAX         2147483647
-# define INT_MIN         (-2147483647-1) // Не похоже на нормальную запись. Этот макрос будет высчитываться при каждом использовании и портить производительность.
+# define INT_MIN         (-2147483648)
 
 # define NUM_OF_OPERATIONS         11
 # define IS_VALID_OPERATION(x) (x >= 0 && x <  NUM_OF_OPERATIONS)
@@ -38,11 +38,11 @@
 # define RRA_RB      3
 # define NUM_VARIATIONS 4
 
-typedef struct       s_element
+typedef struct		s_element
 {
     long             value;
     struct s_element	*next;
-}		            t_element;
+}					t_element;
 
 
 typedef struct       s_rotations

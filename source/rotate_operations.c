@@ -1,21 +1,21 @@
 #include "push_swap.h"
 
-void ra(t_base *singleton)
+void	ra(t_base *singleton)
 {
-    rotate(&(singleton->stack_a));
+	rotate(&(singleton->stack_a));
 }
 
-void rra(t_base *singleton)
+void	rra(t_base *singleton)
 {
-    reverse_rotate(&(singleton->stack_a));
+	reverse_rotate(&(singleton->stack_a));
 }
 
-void rb(t_base *singleton)
+void	rb(t_base *singleton)
 {
-    rotate(&(singleton->stack_b));
+	rotate(&(singleton->stack_b));
 }
 
-void rrb(t_base *singleton)
+void	rrb(t_base *singleton)
 {
-    reverse_rotate(&(singleton->stack_b));
+	reverse_rotate(&(singleton->stack_b));
 }
