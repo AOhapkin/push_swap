@@ -26,8 +26,6 @@ char	**ft_split(char const *s, char c)
 	size_t		i;
 	size_t		ptr_len;
 
-	if (!s)
-		return (NULL);
 	result = (char **)malloc(sizeof(char *) * (ft_count_strs(s, c) + 1));
 	if (!result)
 		return (NULL);

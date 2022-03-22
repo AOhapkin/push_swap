@@ -49,14 +49,13 @@ int	get_position_to_insert(t_element *stack, t_element *element)
 	position = 1;
 	while (stack && stack->next)
 	{
-		if ((stack->value < stack->next->value
-				&& stack->value < element->value
+		if ((stack->value < stack->next->value && stack->value < element->value
 				&& stack->next->value > element->value)
-					|| (stack->value > stack->next->value
-						&& ((stack->value < element->value
+			|| (stack->value > stack->next->value
+				&& ((stack->value < element->value
 						&& stack->next->value < element->value)
-							|| (stack->value > element->value
-								&& stack->next->value > element->value))))
+					|| (stack->value > element->value
+						&& stack->next->value > element->value))))
 			return (position);
 		position++;
 		stack = stack->next;
