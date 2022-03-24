@@ -142,4 +142,9 @@ void		*ft_memalloc(size_t size);
 void		*ft_memset(void *dest, int c, size_t count);
 int			is_valid_operation(long operationIndex);
 
+char		*get_next_line(int fd);
+void		free_tmp(char *tmp_for_freeing);
+char		*ft_strjoin(char const *s1, char const *s2);
+char		*ft_strdup(const char *str);
+
 #endif
