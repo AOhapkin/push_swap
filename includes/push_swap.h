@@ -88,7 +88,7 @@ long		ft_atol(const char *str);
 int			is_valid_values(t_element *head);
 void		free_singleton(t_base *singleton);
 
-void		perform_operations(t_base *singleton, t_element *head);
+void		perform_operations(t_base *singleton, t_element *operations_head);
 void		sorting(t_base *singleton);
 
 t_element	*get_shortest_operation_list(t_base *singleton);

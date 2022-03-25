@@ -25,20 +25,20 @@ void	call_operation_function(t_base *singleton, int operation_index)
 	implementations[RRB] = rrb;
 	implementations[RR] = rr;
 	implementations[RRR] = rrr;
-	if (is_valid_operation(operation_index) || operation_index < 0)
+	if (is_valid_operation(operation_index))
 		implementations[operation_index](singleton);
 }
 
-void	perform_operations(t_base *singleton, t_element *head)
+void	perform_operations(t_base *singleton, t_element *operations_head)
 {
-	t_element	*tmp;
+	t_element	*tmp_operation;
 
-	tmp = head;
-	push_elements_back(&(singleton->operations), head);
-	while (tmp)
+	tmp_operation = operations_head;
+	push_elements_back(&(singleton->operations), operations_head);
+	while (tmp_operation)
 	{
-		call_operation_function(singleton, tmp->value);
-		tmp = tmp->next;
+		call_operation_function(singleton, tmp_operation->value);
+		tmp_operation = tmp_operation->next;
 	}
 }
 
