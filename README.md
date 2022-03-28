@@ -177,12 +177,3 @@ void	init_singleton(t_base *singleton, int argc, char **argv) - сохраняе
                     1. оптимизировать с учетом `rrr` и `rr`
         2. вставить `*best` в `A` оптимальным набором команд
 4. распечатать
-
----
-
-## Bugs and TODOs
-
-* ```./push_shwap "1, 5"```
-    * ```Process finished with exit code 1```
-* ```./push_shwap```
-    * ```Process finished with exit code 1```
